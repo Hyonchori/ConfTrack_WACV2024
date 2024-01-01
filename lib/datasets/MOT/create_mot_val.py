@@ -11,10 +11,11 @@ def main(args):
     json_path = args.json_path
     mot17_root = args.mot17_root
     trackeval_gt_root = args.trackeval_gt_root
+    target_dir = args.target_dir
     save = args.save
 
     save_dir = os.path.join(mot17_root, 'val')
-    trackeval_save_dir = os.path.join(trackeval_gt_root, 'MOT17-val')
+    trackeval_save_dir = os.path.join(trackeval_gt_root, target_dir)
     if save:
         if not os.path.isdir(save_dir):
             os.mkdir(save_dir)
@@ -106,6 +107,17 @@ def main(args):
             with open(save_seqinfo_trackeval_path, 'w') as f:
                 f.write(new_seqinfo)
 
+    # create val seqmap for evaluation
+    time.sleep(0.5)
+    print('\nMaking val Seqmap files ...')
+    vid_names = sorted(os.listdir(save_dir))
+    seqmap_dir = os.path.join(trackeval_gt_root, 'seqmaps')
+    seqmap_path = os.path.join(seqmap_dir, f'{target_dir}.txt')
+    with open(seqmap_path, 'w') as f:
+        f.write('name\n')
+        for vid_name in vid_names:
+            f.write(f'{vid_name}\n')
+
 
 def get_args():
     parser = argparse.ArgumentParser()
@@ -118,6 +130,9 @@ def get_args():
 
     trackeval_gt_root = '/home/jhc/Desktop/dataset/open_dataset/mot_test/data/gt/mot_challenge'
     parser.add_argument('--trackeval_gt_root', type=str, default=trackeval_gt_root)
+
+    target_dir = 'MOT20-val'
+    parser.add_argument('--target_dir', type=str, default=target_dir)
 
     save = True
     parser.add_argument('--save', action='store_true', default=save)

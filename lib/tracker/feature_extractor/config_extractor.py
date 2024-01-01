@@ -1,10 +1,8 @@
-from .simple_cnn.simple_cnn_wrapper import get_wrapped_simple_cnn
 from .fast_reid.fast_reid_wrapper import get_wrapped_fast_reid
 
 
 def get_extractor(cfg, device=None):
     extractor_dict = {
-        'simple_cnn': get_wrapped_simple_cnn,
         'fast_reid': get_wrapped_fast_reid
     }
     if cfg.type_extractor not in extractor_dict:

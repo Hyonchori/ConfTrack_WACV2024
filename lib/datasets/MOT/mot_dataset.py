@@ -165,7 +165,7 @@ def get_mot_videos(
                     f'{target_select}_{target_split}',
                     cfg.detector_result_dir,
                     f'{"-".join(x.split("-")[:2])}.txt',
-                ) if cfg.detector_result_dir is not None else None,
+                ) if cfg.detector_result_dir is not None and cfg.use_saved_det_result else None,
                 preproc=preproc,
                 use_detector=cfg.use_private_det and not cfg.use_saved_det_result,
                 use_extractor=cfg.use_extractor

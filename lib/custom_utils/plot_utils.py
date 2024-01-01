@@ -4,8 +4,8 @@ from typing import List
 import cv2
 import numpy as np
 
-from tracker.detection.base_detection import BaseDetection
-from tracker.track.base_track import BaseTrack
+from lib.tracker.detection.base_detection import BaseDetection
+from lib.tracker.track.base_track import BaseTrack
 
 
 class Colors:

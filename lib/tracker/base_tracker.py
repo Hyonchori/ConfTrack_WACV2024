@@ -13,6 +13,7 @@ from .gmc.base_cmc import BaseCMC
 
 class BaseTracker:
     def __init__(self, trk_cfg, device=None):
+        print(f'\nLoading tracker "{trk_cfg.tracker_name}"...')
         self.cfg = trk_cfg
         self.matching_fn = get_matching_fn(self.cfg)
         self.extractor = get_extractor(self.cfg, device) if self.cfg.use_extractor else None

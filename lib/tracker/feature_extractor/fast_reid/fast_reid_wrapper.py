@@ -72,7 +72,7 @@ class WrappedFastReID(nn.Module):
 
         if weights_file is not None:
             if not os.path.isfile(weights_file):
-                weights_dir = os.path.join(FILE.parents[3], 'pretrained', 'feature_extractor', 'fast_reid')
+                weights_dir = os.path.join(FILE.parents[4], 'pretrained', 'feature_extractor', 'fast_reid')
                 weights_file = os.path.join(weights_dir, weights_file)
         else:
             print('\tpretrained extractor weights is None.')

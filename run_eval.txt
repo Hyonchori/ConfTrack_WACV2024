@@ -1,0 +1,11 @@
+# MOT17-val for evaluating general tracking performance
+(in TrackEval)
+python scripts/run_mot_challenge.py --BENCHMARK MOT17 --GT_FOLDER /home/jhc/Desktop/dataset/open_dataset/MOT/data/gt/mot_challenge --SPLIT_TO_EVAL val --TRACKERS_FOLDER
+
+# MOT20-val for evaluating tracking performance in crowd scene
+(in TrackEval)
+python scripts/run_mot_challenge.py --BENCHMARK MOT20 --GT_FOLDER /home/jhc/Desktop/dataset/open_dataset/MOT/data/gt/mot_challenge --SPLIT_TO_EVAL val --TRACKERS_FOLDER
+
+# DanceTrack-val for evaluating tracking performance on non-linear motion
+(in DanceTrack)
+python3 TrackEval/scripts/run_mot_challenge.py --SPLIT_TO_EVAL val  --METRICS HOTA CLEAR Identity  --GT_FOLDER /home/jhc/Desktop/dataset/open_dataset/DanceTrack/val --SEQMAP_FILE /home/jhc/Desktop/dataset/open_dataset/DanceTrack/val_seqmap.txt --SKIP_SPLIT_FOL True   --TRACKERS_TO_EVAL '' --TRACKER_SUB_FOLDER ''  --USE_PARALLEL True --NUM_PARALLEL_CORES 8 --PLOT_CURVES True --TRACKERS_FOLDER
