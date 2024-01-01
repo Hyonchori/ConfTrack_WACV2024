@@ -1,6 +1,7 @@
 # ConfTrack_WACV2024
 
 ![conftrack_methods](./assets/conftrack_methods.png)
+![conftrack_framework](./assets/conftrack_framework.png)
 
 > #### ConfTrack: Kalman Filter-based Multi-Person Tracking by Utilizing Confidence Score of Detection Box  
 > Hyeonchul Jung, Seokjun Kang, Takgen Kim, HyeongKi Kim  
