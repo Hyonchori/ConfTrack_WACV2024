@@ -9,12 +9,12 @@ from pycocotools.coco import COCO
 
 def main(args):
     json_path = args.json_path
-    mot17_root = args.mot17_root
+    mot_root = args.mot_root
     trackeval_gt_root = args.trackeval_gt_root
     target_dir = args.target_dir
     save = args.save
 
-    save_dir = os.path.join(mot17_root, 'val')
+    save_dir = os.path.join(mot_root, 'val')
     trackeval_save_dir = os.path.join(trackeval_gt_root, target_dir)
     if save:
         if not os.path.isdir(save_dir):
@@ -31,7 +31,7 @@ def main(args):
 
     for i, (img_id, img_info) in tqdm(enumerate(zip(img_ids, img_infos)), total=len(img_infos)):
         vid_name, dir_name, img_name = img_info['file_name'].split('/')
-        target_img_path = os.path.join(mot17_root, 'train', vid_name, dir_name, img_name)
+        target_img_path = os.path.join(mot_root, 'train', vid_name, dir_name, img_name)
         if save:
             target_save_dir = os.path.join(save_dir, vid_name, dir_name)
             if not os.path.isdir(target_save_dir):
@@ -50,9 +50,9 @@ def main(args):
         tmp_start_idx = min(img_indices)
         tmp_end_idx = max(img_indices)
 
-        tmp_det_path = os.path.join(mot17_root, 'train', vid_name, 'det', 'det.txt')
-        tmp_gt_path = os.path.join(mot17_root, 'train', vid_name, 'gt', 'gt.txt')
-        tmp_seqinfo_path = os.path.join(mot17_root, 'train', vid_name, 'seqinfo.ini')
+        tmp_det_path = os.path.join(mot_root, 'train', vid_name, 'det', 'det.txt')
+        tmp_gt_path = os.path.join(mot_root, 'train', vid_name, 'gt', 'gt.txt')
+        tmp_seqinfo_path = os.path.join(mot_root, 'train', vid_name, 'seqinfo.ini')
 
         save_det_dir = os.path.join(save_dir, vid_name, 'det')
         save_gt_dir = os.path.join(save_dir, vid_name, 'gt')
@@ -125,8 +125,8 @@ def get_args():
     json_path = '/home/jhc/PycharmProjects/MOT/MOT_study/ConfTrack_WACV2024/lib/datasets/MOT/mot20_val_half.json'
     parser.add_argument('--json_path', type=str, default=json_path)
 
-    mot17_root = '/home/jhc/Desktop/dataset/open_dataset/mot_test/MOT20'
-    parser.add_argument('--mot17_root', type=str, default=mot17_root)
+    mot_root = '/home/jhc/Desktop/dataset/open_dataset/mot_test/MOT20'
+    parser.add_argument('--mot_root', type=str, default=mot_root)
 
     trackeval_gt_root = '/home/jhc/Desktop/dataset/open_dataset/mot_test/data/gt/mot_challenge'
     parser.add_argument('--trackeval_gt_root', type=str, default=trackeval_gt_root)
